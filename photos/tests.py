@@ -33,3 +33,21 @@ class LocationTestClass(TestCase):
         self.kigali.save_location()
         locations = Location.objects.all()
         self.assertTrue(len(locations) > 0)
+
+class ImageTestClass(TestCase):
+
+    def setUp(self):
+        # Creating image and saving it
+        self.new_image= Image(image_name = 'success', description ='success is needed', location ='kigali', category ='travel')
+        self.new_image.save()
+        # Creating category and saving it
+        self.travel= Category(names = 'travel')
+        self.travel.save_category()
+        # Creating location and saving it
+        self.kigali= Location(names = 'kigali')
+        self.kigali.save_location()
+
+    def tearDown(self):
+        Category.objects.all().delete()
+        Location.objects.all().delete()
+        Image.objects.all().delete()
