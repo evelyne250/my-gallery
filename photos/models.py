@@ -12,6 +12,11 @@ class Category(models.Model):
         '''
         return self.names
 
+    def save_category(self):
+        '''
+        method that saves categories
+        '''
+        self.save()
 
 class Location(models.Model):
     location = models.CharField(max_length =30)
