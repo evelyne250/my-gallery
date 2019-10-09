@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 import datetime as dt
 from django.http  import HttpResponse
+
 
 # Create your views here.
 def welcome(request):
@@ -8,11 +9,4 @@ def welcome(request):
 
 def pictures(request):
     date = dt.date.today()
-    html = f'''
-        <html>
-            <body>
-                <h1> {date.day}-{date.month}-{date.year}</h1>
-            </body>
-        </html>
-            '''
-    return HttpResponse(html)
+    return render(request, 'all-photos/pics.html', {"date": date,})
