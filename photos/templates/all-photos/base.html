@@ -7,7 +7,9 @@
   {% endblock %}
 </head>
 <body>
+    
         {% include "navbar.html" %}
+        <h1 class="text-center" class="jumbotron">Welcome to my Gallery</h1>
     {% block content %} <h1 class='text-center'>Pictures for {{date|date:"l d-F Y"}}</h1> {%endblock%}
 
     {% block scripts %}

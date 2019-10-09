@@ -18,13 +18,18 @@ class CategoryTestClass(TestCase):
         categories = Category.objects.all()
         self.assertTrue(len(categories) > 0)
 
-class AuthTestCase(TestCase):
-    def setUp(self):
-        self.u = User.objects.create_user('test@dom.com', 'test@dom.com', 'pass')
-        self.u.is_staff = True
-        self.u.is_superuser = True
-        self.u.is_active = True
-        self.u.save()
+class LocationTestClass(TestCase):
 
-    def testLogin(self):
-        self.client.login(username='test@dom.com', password='pass')
+    # Set up method
+    def setUp(self):
+        self.kigali= Location(location="kigali")
+
+# Testing  instance
+    def test_instance(self):
+        self.assertTrue(isinstance(self.kigali,Location))
+
+    # Testing Save Method
+    def test_save_method(self):
+        self.kigali.save_location()
+        locations = Location.objects.all()
+        self.assertTrue(len(locations) > 0)

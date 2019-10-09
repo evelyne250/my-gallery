@@ -26,6 +26,14 @@ class Location(models.Model):
         displays Locations
         '''
         return self.location
+    
+
+    def save_location(self):
+        '''
+        method to save image
+        '''
+        return self.save()
+
 
 class Image(models.Model):
     # image = models.ImageField(upload_to='pics/')
@@ -42,3 +50,9 @@ class Image(models.Model):
         displays images
         '''
         return self.image_name
+    
+    def save_image(self):
+        '''
+        method to save image
+        '''
+        return self.save()
