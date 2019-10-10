@@ -36,7 +36,7 @@ class Location(models.Model):
 
 
 class Image(models.Model):
-    # image = models.ImageField(upload_to='pics/')
+    image = models.ImageField(upload_to='pics/')
     image_name = models.CharField(max_length=30)
     description = models.TextField()
     location= models.ForeignKey(Location)
@@ -56,3 +56,8 @@ class Image(models.Model):
         method to save image
         '''
         return self.save()
+
+    @classmethod
+    def search_by_category(cls,search_term):
+        photos = cls.objects.filter(category__icontains=search_term)
+        return photos
