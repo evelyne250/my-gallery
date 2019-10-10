@@ -1,15 +1,13 @@
 from django.shortcuts import render,redirect
 import datetime as dt
 from django.http  import HttpResponse
-
+from .models import Image,Category,Location
 
 # Create your views here.
-def welcome(request):
-    return HttpResponse('Welcome to my Gallery')
-
 def pictures(request):
-    date = dt.date.today()
-    return render(request, 'all-photos/pics.html', {"date": date,})
+   
+    images = Image.pictures()
+    return render(request, 'all-photos/pics.html',{'images':images})
 
 def search_results(request):
 
@@ -23,3 +21,10 @@ def search_results(request):
     else:
         message = "You haven't searched for anything"
         return render(request, 'all-photos/search.html',{"message":message})
+
+def image(request,image_id):
+    try:
+        image = Image.objects.get(id = image_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"all-photos/image.html", {"image":image})

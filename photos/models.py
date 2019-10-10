@@ -1,7 +1,6 @@
 from django.db import models
 
 # Create your models here.
-from django.db import models
 
 class Category(models.Model):
     names = models.CharField(max_length =30)
@@ -56,6 +55,14 @@ class Image(models.Model):
         method to save image
         '''
         return self.save()
+    @classmethod
+    def pictures(cls):
+
+        '''
+        method to get all images 
+        '''
+        images = cls.objects.all()
+        return images
 
     @classmethod
     def search_by_category(cls,search_term):
