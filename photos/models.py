@@ -52,9 +52,22 @@ class Image(models.Model):
     
     def save_image(self):
         '''
-        method to save image
+        method to save images
         '''
         return self.save()
+    def delete_image(self):
+
+        '''
+        method to delete images
+        '''
+        return self.delete()
+
+
+    def update_image(self, img):
+        '''
+        Method to update images
+        '''
+        self.update()
     @classmethod
     def pictures(cls):
 
