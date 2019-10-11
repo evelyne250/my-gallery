@@ -2,12 +2,16 @@ from django.shortcuts import render,redirect
 import datetime as dt
 from django.http  import HttpResponse
 from .models import Image,Category,Location
-
+import pyperclip
 # Create your views here.
 def pictures(request):
    
-    images = Image.pictures()
-    return render(request, 'all-photos/pics.html',{'images':images})
+    images = Image.objects.all()
+    location = Location.objects.all()
+    # image_found = Image.copy_image()
+    # print(pyperclip.paste())
+   
+    return render(request, 'all-photos/pics.html',{'images':images,'location':location})
 
 
 def search_results(request):
@@ -25,3 +29,9 @@ def search_results(request):
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"message":message})
+
+def display_by_location(request, id):
+    location = Location.objects.all()
+    images = Images.objects.filter(location__id=id)
+    
+    return render(request, "all-photos/location.html",{'images':images,'location':location})

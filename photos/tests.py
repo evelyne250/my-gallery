@@ -1,6 +1,6 @@
 from django.test import TestCase
 from .models import Category,Location,Image
-from django.contrib import auth
+import pyperclip
 # Create your tests here.
 class CategoryTestClass(TestCase):
 
@@ -38,7 +38,7 @@ class ImageTestClass(TestCase):
 
     def setUp(self):
         # Creating image and saving it
-        self.new_image= Image(image_name = 'success', description ='success is needed', location ='kigali', category ='travel')
+        self.new_image= Image(image = 'images.jpg', image_name = 'success', description ='success is needed', location ='kigali', category ='travel')
         self.new_image.save()
         # Creating category and saving it
         self.travel= Category(names = 'travel')
@@ -51,3 +51,13 @@ class ImageTestClass(TestCase):
         Category.objects.all().delete()
         Location.objects.all().delete()
         Image.objects.all().delete()
+
+    def test_copy_image(self):
+        '''
+        Test to confirm that we are copying the image address 
+        '''
+
+        self.image.save_image()
+        Image.copy_image("images1.jpg")
+
+        self.assertEqual(self.image.image,pyperclip.paste())

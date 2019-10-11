@@ -1,5 +1,5 @@
 from django.db import models
-
+import pyperclip
 # Create your models here.
 
 class Category(models.Model):
@@ -68,15 +68,13 @@ class Image(models.Model):
         Method to update images
         '''
         self.update()
+
+
     @classmethod
-    def pictures(cls):
-
-        '''
-        method to get all images 
-        '''
-        images = cls.objects.all()
-        return images
-
+    def copy_image(cls,image):
+        image_found = Image.image(image)
+        pyperclip.copy(image_found.image)
+        
     @classmethod
     def search_by_category(cls,search_term):
         photos = cls.objects.filter(category__icontains=search_term)

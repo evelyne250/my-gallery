@@ -12,9 +12,23 @@
       <a class="navbar-brand" href="{% url 'pictures' %}">My gallery</a>
     </div>
   </div>
-       <!-- Adding a search form  -->
-       <div class="col-sm-4 col-md-4 navbar-right">
 
+
+    <div class="btn-group dropright">
+      <button type="button" class="btn btn-info dropdown-toggle mr-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Locations
+      </button>
+     
+      <div class="dropdown-menu">
+       <!-- Adding a search form  -->
+ <div class="col-sm-4 col-md-4 navbar-right">
+            {% for loc in location %}
+              <a href="{% url 'display_by_location' loc.id %}">
+              <p class="text-dark ml-2">{{loc.name}}</p>
+            </a>
+            {% endfor %}
+          </div>
+        </div>
         <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
           <div class="input-group">
