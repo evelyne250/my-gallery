@@ -52,12 +52,12 @@ class ImageTestClass(TestCase):
         Location.objects.all().delete()
         Image.objects.all().delete()
 
-    def test_copy_image(self):
-        '''
-        Test to confirm that we are copying the image address 
-        '''
+    # def test_copy_image(self):
+    #     '''
+    #     Test to confirm that we are copying the image address 
+    #     '''
 
-        self.image.save_image()
-        Image.copy_image("images1.jpg")
+    #     self.image.save_image()
+    #     Image.copy_image("images1.jpg")
 
-        self.assertEqual(self.image.image,pyperclip.paste())
+    #     self.assertEqual(self.image.image,pyperclip.paste())

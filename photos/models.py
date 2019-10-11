@@ -39,7 +39,7 @@ class Image(models.Model):
     image_name = models.CharField(max_length=30)
     description = models.TextField()
     location= models.ForeignKey(Location)
-    category = models.ForeignKey(Category)
+    category = models.ForeignKey(Category, db_column='names')
 
 
 
@@ -77,5 +77,5 @@ class Image(models.Model):
         
     @classmethod
     def search_by_category(cls,search_term):
-        photos = cls.objects.filter(category__icontains=search_term)
+        photos = cls.objects.filter(category__names__contains=search_term)
         return photos

@@ -13,6 +13,13 @@ def pictures(request):
    
     return render(request, 'all-photos/pics.html',{'images':images,'location':location})
 
+def image(request,image_id):
+    try:
+        image = Image.objects.get(id = image_id)
+    except DoesNotExist:
+        raise Http404()
+    return render(request,"all-photos/image.html", {"image":image})
+
 
 def search_results(request):
     if 'image' in request.GET and request.GET["image"]:
@@ -24,14 +31,14 @@ def search_results(request):
         
         
 
-        return render(request, 'all-photos/search.html',{"message":message,"searched_images": searched_images})
+        return render(request, 'all-photos/search.html',{"message":message,"searched_image": searched_images})
 
     else:
         message = "You haven't searched for any term"
         return render(request, 'all-photos/search.html',{"message":message})
 
-def display_by_location(request, id):
+def filter_by_location(request, id):
     location = Location.objects.all()
-    images = Images.objects.filter(location__id=id)
+    images = Image.objects.filter(location__id=id)
     
     return render(request, "all-photos/location.html",{'images':images,'location':location})

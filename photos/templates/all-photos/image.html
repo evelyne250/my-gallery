@@ -1,0 +1,18 @@
+{%extends 'all-photos/base.html'%}
+
+ {% block content %}
+
+ <div class="container">
+
+   <div class="row">
+     <img src="{{image.image.url}}"  class="img-responsive" alt="">
+   </div>
+
+   <div class="row">
+     <p class="text-center">{{image.image_name}}</p>
+   
+     <p class="text-center">{{image.description}}</p>
+   </div>
+
+  
+ {% endblock %}
