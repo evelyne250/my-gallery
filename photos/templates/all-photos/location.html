@@ -1,25 +1,38 @@
 {%extends 'all-photos/base.html'%}
 {% block content %}
-  <div class="row container-fluid content">
-    <div class="col-md-4">
-      <h1 class="mt-5">Location:</h1>
-      {% for image in images %}
-        <h1 class="ml-5">{{image.location}}</h1>
-      {% endfor %}
-    </div>
-    <div class="col-md-4">
-      <div class="card mt-3">
-        {% if images %}
-          {% for image in images  %}
-          <img src="{{image.image.url}}" alt="" width="300" height='250'>
-          <p>{{image.name}}</p>
-          <p>{{image.description}}</p>
-          <p>{{image.category}}</p>
-          {% endfor %}
-        {% else %}
-          <p>The location doesn't exists</p>
-        {% endif %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+{%if images%}
+  
+    
+<div class="row" class="container-fluid">
+
+
+        {% for image in images %}
+        <!-- <h1 class="text-center" >picture for {{image.location}}</h1> -->
+      <div class="col-md-4" data-toggle="modal" data-target="#{{image.id}}">
+            <div class="card "  style="width:16px; padding: 10px;">
+               <img src="{{image.image.url}}" alt="" width="300" height='250' >
+            </div>
+            <p>Name: {{image.image_name}}</p>
+            <p>Description: {{image.description}}</p>
+            <p>pictures for {{image.location}}</p>
+
       </div>
-    </div>
-  </div>
+           
+
+    
+
+        {% endfor%}
+        
+</div>
+{% endif %}
+
+
+
+</div>
+
+</div>
+
 {% endblock %}

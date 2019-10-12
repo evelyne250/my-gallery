@@ -1,5 +1,8 @@
 {%extends 'all-photos/base.html'%} 
 {% block content %}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <div class="container">
 
   <div class="row">
@@ -16,9 +19,9 @@
     {% if searched_image%}
     
     {% for image in searched_image %}
-      <div class="col-sm-6 col-md-3">
+      <div class="col-md-4">
          <img src="{{image.image.url}} " width="300" height='250'>
-            
+         <p>category: {{image.category}}</p>
       </div>
     {% endfor %}
   {% endif %}

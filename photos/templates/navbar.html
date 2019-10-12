@@ -21,9 +21,11 @@
       </div>
     </form>
 
- <div class="dropdown-toggle" data-toggle="dropdown">
-<button type="button" class="btn btn-info dropdown-toggle mr-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" name="location">Locations</button>
-  {% for locations in location %}
+ <div class="dropdown" style="float: right;">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Locations</button>
+<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+{% for locations in location %}
+
   <a href="{% url 'filter_by_location' locations.id %}">
   <p class="text-center">{{locations.name}}</p>
 </a>
@@ -31,20 +33,6 @@
  </div>
   </div>
 
-
-    <!-- <div class="btn-group dropright" id="locate">
-      <button type="button" class="btn btn-info dropdown-toggle mr-2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Locations
-      </button>
-     
-      <div class="dropdown-menu"> -->
-  <!-- {% for locations in location %}
-              <a href="{% url 'filter_by_location' locations.id %}">
-              <p class="text-center">{{locations.name}}</p>
-            </a>
-            {% endfor %}
-          </div>
-        </div> -->
         
       </div>
 

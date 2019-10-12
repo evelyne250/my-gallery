@@ -2,11 +2,16 @@
 
 {% block content %}
 {{block.super}}
-
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <div id="new" class="container-fluid" id="overlay"><br><br><br><br><br><br><br><br><br><br><br><br>
-<h1 class="text-center" class="jumbotron" style="font-family: 'Lucida Sans', 'Lucida Sans Regular'; font-size: 50px;">Welcome to my Gallery</h1><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<h1 class="text-center" class="jumbotron" style="font-family: 'Lucida Sans', 'Lucida Sans Regular'; font-size: 50px;">Welcome to my Gallery<br>Explore More<br><span><a class = 'text-center 'style='font-size:100px;' href="#own">&#8650;</a></span></h1><br><br><br><br>
+<br><br><br><br><br><br>
+
 </div>
-<div class="container-fluid">
+
+<div class="container-fluid" id="own">
     
   {%if images%}
   
@@ -16,15 +21,15 @@
       <h1 class="text-center" >ALL IMAGES</h1>
             {% for image in images %}
           
-          <div class="col-md-4" data-toggle="modal" data-target="#{{image.id}}">
+          <div class="col-md-4" data-toggle="modal" data-target="#mode">
                 <div class="card "  style="width:16px; padding: 10px;">
-                   <img src="{{image.image.url}}" alt="" width="300" height='250'>
+                   <img src="{{image.image.url}}" alt="" width="300" height='250' >
                 </div>
           </div>
                
-
+<!-- credits to modal bootstrap on https://getbootstrap.com -->
           <!-- .modal-profile -->
-          <div class="modal fade modal-profile" id="{{image.id}}" data-dismiss="modal">
+          <div class="modal fade modal-profile" id="mode" data-dismiss="modal">
               <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                           <div class="modal-header">
@@ -33,10 +38,10 @@
                           </div>
                           <div class="modal-body" >
                        
-        <p>Name: {{image.image_name}}</p>
-        <p>Description: {{image.description}}</p>
-        <p>category: {{image.category}}</p>
-        <p>location: {{image.location}}</p>
+        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">Name: {{image.image_name}}</p>
+        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">Description: {{image.description}}</p>
+        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">category: {{image.category}}</p>
+        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">location: {{image.location}}</p>
       </div>
       <div class="modal-footer">
          
@@ -56,6 +61,6 @@
     
     </div>
 
-</div>
+
 
 {% endblock %}
