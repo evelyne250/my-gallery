@@ -7,7 +7,7 @@ urlpatterns=[
     # url('^$',views.welcome,name = 'welcome'),
     url('^$',views.pictures,name='pictures'),
     url(r'^search/', views.search_results, name='search_results'),
-    url(r'^locations/(\d+)', views.filter_by_location, name = 'filter_by_location'),
+    url(r'^location/(\d+)', views.filter_by_location, name = 'filter_by_location'),
     url(r'^image/(\d+)',views.image,name ='image')
 ]
 if settings.DEBUG:

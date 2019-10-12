@@ -3,11 +3,10 @@
 {% block content %}
 {{block.super}}
 
-
-
-
-
-<div class="container">
+<div id="new" class="container-fluid" id="overlay"><br><br><br><br><br><br><br><br><br><br><br><br>
+<h1 class="text-center" class="jumbotron" style="font-family: 'Lucida Sans', 'Lucida Sans Regular'; font-size: 50px;">Welcome to my Gallery</h1><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</div>
+<div class="container-fluid">
     
   {%if images%}
   
@@ -25,7 +24,7 @@
                
 
           <!-- .modal-profile -->
-          <div class="modal fade modal-profile" tabindex="-1" role="dialog" aria-labelledby="modalProfile" id="{{image.id}}" aria-hidden="true" data-dismiss="modal">
+          <div class="modal fade modal-profile" id="{{image.id}}" data-dismiss="modal">
               <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                           <div class="modal-header">
