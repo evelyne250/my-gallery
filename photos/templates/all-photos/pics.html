@@ -18,10 +18,10 @@
     
     <div class="row">
 
-      <h1 class="text-center" >ALL IMAGES</h1>
+      <h1 class="text-center" class="jumbotron" style="font-family: 'Lucida Sans', 'Lucida Sans Regular'; font-size: 50px;" >ALL IMAGES</h1>
             {% for image in images %}
           
-          <div class="col-md-4" data-toggle="modal" data-target="#mode">
+          <div class="col-md-4" data-toggle="modal" data-target="#{{image.id}}">
                 <div class="card "  style="width:16px; padding: 10px;">
                    <img src="{{image.image.url}}" alt="" width="300" height='250' >
                 </div>
@@ -29,22 +29,22 @@
                
 <!-- credits to modal bootstrap on https://getbootstrap.com -->
           <!-- .modal-profile -->
-          <div class="modal fade modal-profile" id="mode" data-dismiss="modal">
+          <div class="modal fade modal-profile" data-dismiss="modal" id="{{image.id}}">
               <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                           <div class="modal-header">
-                              <img src="{{image.image.url}}" alt="" width="300" height='250'>
+                              <img src="{{image.image.url}}" alt="">
                                 <h3 class="modal-title">{{image.name}}</h3>
                           </div>
                           <div class="modal-body" >
                        
-        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">Name: {{image.image_name}}</p>
-        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">Description: {{image.description}}</p>
-        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">category: {{image.category}}</p>
-        <p style="font-family: 'Lucida Sans', 'Lucida Sans Regular';font-size: 20px;">location: {{image.location}}</p>
+        <p style="font-size: 15px;"><strong>Name:</strong> {{image.image_name}}</p>
+        <p style="font-size: 15px;"><strong>Description: </strong>{{image.description}}</p>
+        <p style="font-size: 15px;"><strong>category: </strong>{{image.category}}</p>
+        <p style="font-size: 15px;"><strong>location: </strong>{{image.location}}</p>
       </div>
       <div class="modal-footer">
-         
+        <input class="form-control" type="text" value="http://127.0.0.1:8000{{image.image.url}}" id="{{image.id}}">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
     </div>
