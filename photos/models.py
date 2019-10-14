@@ -17,6 +17,17 @@ class Category(models.Model):
         '''
         self.save()
 
+    def update_category(self):
+        '''
+        method that saves categories
+        '''
+        self.update()
+    def delete_category(self):
+        '''
+        method that deletes categories
+        '''
+        self.delete()
+
 class Location(models.Model):
     location = models.CharField(max_length =30)
 
@@ -32,6 +43,18 @@ class Location(models.Model):
         method to save image
         '''
         return self.save()
+    def update_location(self):
+        '''
+        method that updates locations
+        '''
+        self.update()
+
+    def delete_location(self):
+        '''
+        method that deletes locations
+        '''
+        self.delete()
+    
 
 
 class Image(models.Model):
